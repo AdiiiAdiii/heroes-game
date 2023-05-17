@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heroes Game</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    
-    
-    
-    
+    <div class="main-container">
+        <div class="battleTitle">
+            <span>Pick your battle!</span>
+        </div>
+        <div class="versus">
+            <img src="" alt="">
+            <span class="versusText">VS</span>
+            <img src="" alt="">
+        </div>
+        <div class="fight">
+            <button onclick="epicFight.go()" class="btnFight"><img class="btnImage" src="/assets/images/fight.png"
+                    alt="fight"></button>
+        </div>
+        <div class="heroes-container">
+            <div class="hero-container">
+                <img class="heroImage" src="/assets/images/dwarf_selection.png" alt="dwarf">
+                <!-- Modifica imaginile in 300x300 px -->
+            </div>
+            <div class="hero-container">
+                <img class="heroImage" src="/assets/images/sprite_selection.png" alt="sprite">
+            </div>
+            <div class="hero-container">
+                <img class="heroImage" src="/assets/images/dragon_selection.png" alt="dragon">
+            </div>
+        </div>
+    </div>
+
+
+
     <script src="/js/main.js"></script>
 </body>
+
 </html>

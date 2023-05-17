@@ -127,4 +127,3 @@ let sprite = new Sprite("Prinna Bumblelace Sprite", 40);
 let dragon = new Dragon("Aphat, The Pun Dragon", 60);
 
 let epicFight = new Fight(dwarf, sprite);
-epicFight.go();

@@ -1,0 +1,81 @@
+@font-face {
+    font-family: Dalek;
+    src: url(/assets/fonts/Dalek.ttf);
+}
+@font-face {
+    font-family: MortalKombat1;
+    src: url(/assets/fonts/MK4.TTF);
+}
+@font-face {
+    font-family: MortalKombat2;
+    src: url(/assets/fonts/mk5style.ttf);
+}
+
+body {
+    background-image: url(/assets/images/background2.jpg);
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.main-container {
+    padding-top: 8%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.battleTitle {
+    font-family: MortalKombat2;
+    font-size: 48px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.versus {
+    font-family: MortalKombat1;
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.versusText {
+    /* font-family: ; */
+    font-size: 48px;
+    color: #ffffff;
+}
+
+.btnFight {
+    background: none;
+    border-width: 0px;
+}
+
+.btnImage {
+    height: 100px;
+    padding-top: 40%
+}
+
+.fight {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.heroes-container {
+    display: flex;
+}
+
+.heroes-container .heroImage {
+    height: 100px;
+}
