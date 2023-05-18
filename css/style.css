@@ -23,7 +23,7 @@ body {
 
 
 .main-container {
-    padding-top: 8%;
+    padding-top: 160px;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -31,22 +31,26 @@ body {
 }
 
 .battleTitle {
-    font-family: MortalKombat2;
-    font-size: 48px;
-    color: #ffffff;
     display: flex;
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
 }
 
+.battleTitleText {
+    font-family: Dalek;
+    font-size: 48px;
+    color: #ffffff;
+}
+
 .versus {
     font-family: MortalKombat1;
-    padding-top: 10%;
+    padding-top: 144px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-content: center;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .versusText {
@@ -74,8 +78,36 @@ body {
 
 .heroes-container {
     display: flex;
+    justify-content: center;
 }
 
 .heroes-container .heroImage {
-    height: 100px;
+    height: 250px;
+}
+.heroImage.dwarf:hover {
+    content: url(/assets/images/dwarf-details.png);
+}
+.heroImage.dwarf:target {
+    content: url(/assets/images/dwarf_selected2.png);
+}
+
+.heroImage.sprite:hover {
+    content: url(/assets/images/sprite-details.png);
+}
+
+.heroImage.dragon:hover {
+    content: url(/assets/images/dragon-details.png);
+}
+
+.hero-selection {
+    background: none;
+    border-width: 0px;
+}
+
+.p1-clicked-dwarf {
+    content: url(/assets/images/dwarf_selected.png);
+}
+
+.p1-clicked-dwarf {
+    content: url(/assets/images/dwarf_selected.png);
 }

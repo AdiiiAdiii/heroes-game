@@ -91,6 +91,12 @@ class Fight {
         this.turn = 0;
     }
 
+    // chooseCharacter() {
+    //     // daca turn === 0
+    //     // iti salvezi imaginile in niste variabile
+    //     // listener la click 
+    // }
+
     performAttack() {
         if(this.turn === 0) {
             this.hero1.attack(this.hero2);
@@ -127,3 +133,42 @@ let sprite = new Sprite("Prinna Bumblelace Sprite", 40);
 let dragon = new Dragon("Aphat, The Pun Dragon", 60);
 
 let epicFight = new Fight(dwarf, sprite);
+
+
+let selectedHero1 = null;
+let selectedHero2 = null;
+let selectedHero = document.querySelectorAll("[data-selection]");
+selectedHero.forEach(selectedHero => {
+    selectedHero.addEventListener("click", e => {
+        let selectedHeroName = selectedHero.dataset.selection
+        makeSelection(selectedHeroName)
+    })
+})
+
+function makeSelection(selection) {
+        if (!selectedHero1) {
+            selectedHero1 = selection;
+            console.log("Player 1 selected:", selection);
+            imageP1Left(numeImagine)
+        } else if (!selectedHero2) {
+            selectedHero2 = selection;
+            console.log("Player 2 selected:", selection);
+            imageP2Right(numeImagine)
+        };
+}
+
+// document.getElementById("buton").addEventListener("click", function() {
+//     var divImagine = document.getElementById("divImagine");
+//     var imagine = document.createElement("img");
+//     imagine.src = "calea-catre-imagine.jpg"; // înlocuiește cu calea către imaginea ta
+//     divImagine.appendChild(imagine);
+//   });
+
+function imageP1Left(numeImagine) {
+    var divImagine = document.getElementById('div-image1');
+    divImagine.innerHTML = '<img src="' + numeImagine + '" alt="Imagine">';
+  }
+  function imageP2Right(numeImagine) {
+    var divImagine = document.getElementById('div-image2');
+    divImagine.innerHTML = '<img src="' + numeImagine + '" alt="Imagine">';
+  }

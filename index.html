@@ -12,12 +12,12 @@
 <body>
     <div class="main-container">
         <div class="battleTitle">
-            <span>Pick your battle!</span>
+            <span class="battleTitleText">Pick your battle!</span>
         </div>
         <div class="versus">
-            <img src="" alt="">
+            <div id="div-image1"></div>
             <span class="versusText">VS</span>
-            <img src="" alt="">
+            <div id="div-image2"></div>
         </div>
         <div class="fight">
             <button onclick="epicFight.go()" class="btnFight"><img class="btnImage" src="/assets/images/fight.png"
@@ -25,14 +25,13 @@
         </div>
         <div class="heroes-container">
             <div class="hero-container">
-                <img class="heroImage" src="/assets/images/dwarf_selection.png" alt="dwarf">
-                <!-- Modifica imaginile in 300x300 px -->
+                <button onclick="imageP1Left(`/assets/images/dwarf.png`) || imageP2Right(`/assets/images/dwarf.png`)" class="hero-selection" data-selection="dwarf"><img class="heroImage dwarf" src="/assets/images/dwarf_selection3.png" alt="Dwarf"></button>
             </div>
             <div class="hero-container">
-                <img class="heroImage" src="/assets/images/sprite_selection.png" alt="sprite">
+                <button onclick="imageP1Left(`/assets/images/sprite.png`) || imageP2Right(`/assets/images/sprite.png`)" class="hero-selection" data-selection="sprite"><img class="heroImage sprite" src="/assets/images/sprite_selection3.png" alt="Sprite"></button>
             </div>
             <div class="hero-container">
-                <img class="heroImage" src="/assets/images/dragon_selection.png" alt="dragon">
+                <button onclick="imageP1Left(`/assets/images/dragon.png`) || imageP2Right(`/assets/images/dragon.png`)" class="hero-selection" data-selection="dragon"><img class="heroImage dragon" src="/assets/images/dragon_selection3.png" alt="Dragon"></button>
             </div>
         </div>
     </div>
