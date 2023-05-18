@@ -1,12 +1,12 @@
 //1. Cream clasa parinte Hero
 //2. Cream o metoda attacked ce va fi apelata de fiecare data cand un erou este atacat
-//3. Conditii pentru metoda attacked: 
+//3. Conditii pentru metoda attacked:
 //   Verificam daca eroul are proprietatea this.canFly => cream o variabila chance = cu un numar random, iar daca chance > 0.5 atunci eroul nu isi ia damage deloc.
 //   Verificam daca eroul are proprietatea this.shield => isi ia cu 0.2 mai putin damage
 //   Actualizam hp scazand damage-ul (-=)
 //   Logam numele eroului atacat si cat damage si-a luat + cu cat hp a ramas
-//4. Cream clasele copii: Dwarf, Sprite si Dragon 
-//   In fiecare clasa o sa suprascriem constructor-ul asfel: 
+//4. Cream clasele copii: Dwarf, Sprite si Dragon
+//   In fiecare clasa o sa suprascriem constructor-ul asfel:
 //   - Dwarf are shield, Sprite poate zbura iar Dragonul poate zbura si are si shield
 //   - facem cate o metoda de attack pentru fiecare erou copil (cu obiectul otherHero ca si parametru), in care declaram o valoare pentru damage si ca raspuns al attack-ului, otherHero apeleasa metoda din parinte: attacked.
 //4. Cream clasa fight pentru a conduce bataliile intre eroi, ca is parametrii avem hero1 si hero2 (obiecte) si o sa avem ca proprietate this.turn care se transmite cu valoare 0.
@@ -18,114 +18,119 @@
 //   - cream 3 obiecte pentru fiecare clasa copil: Dwarf, Sprite si Dragon.
 //   - cream o lupta noua si ii dam drumul prin apelarea metodei (go).
 class Hero {
-    constructor(name, hp) {
-        this.name = name;
-        this.hp = hp;
-        this.canFly = false;
-        this.shield = false;
+  constructor(name, hp) {
+    this.name = name;
+    this.hp = hp;
+    this.canFly = false;
+    this.shield = false;
+  }
+
+  attacked(damage) {
+    if (this.canFly) {
+      let chance = Math.random();
+      if (chance > 0.5) {
+        console.log(this.name + " flew away.");
+        damage = 0;
+      }
     }
 
-    attacked(damage) {
-        if(this.canFly) {
-            let chance = Math.random();
-            if(chance > 0.5) {
-                console.log(this.name + " flew away.");
-                damage = 0;
-            }
-        }
-
-        if(this.shield) {
-            damage *= 0.8; // damage = damage * 0.8;
-            console.log(this.name + " defends with a shield.");
-        }
-
-        this.hp -= damage; //this.hp = this.hp - damage;
-        console.log(this.name + " has been attacked. HP reduced by: " + damage + ". HP remaining: " + this.hp + ".");
+    if (this.shield) {
+      damage *= 0.8; // damage = damage * 0.8;
+      console.log(this.name + " defends with a shield.");
     }
+
+    this.hp -= damage; //this.hp = this.hp - damage;
+    console.log(
+      this.name +
+        " has been attacked. HP reduced by: " +
+        damage +
+        ". HP remaining: " +
+        this.hp +
+        "."
+    );
+  }
 }
 
 class Dwarf extends Hero {
-    constructor(name, hp) {
-        super(name, hp);
-        this.shield = true;
-    }
-    
-    attack(otherHero) {
-        let damage = 10;
-        console.log(this.name + " attacked with " + damage + " damage.");
-        otherHero.attacked(damage);
-    }
+  constructor(name, hp) {
+    super(name, hp);
+    this.shield = true;
+  }
+
+  attack(otherHero) {
+    let damage = 10;
+    console.log(this.name + " attacked with " + damage + " damage.");
+    otherHero.attacked(damage);
+  }
 }
 
 class Sprite extends Hero {
-    constructor(name, hp) {
-        super(name, hp);
-        this.canFly = true;
-    }
-    
-    attack(otherHero) {
-        let damage = 15;
-        console.log(this.name + " attacked with " + damage + " damage.");
-        otherHero.attacked(damage);
-    }
+  constructor(name, hp) {
+    super(name, hp);
+    this.canFly = true;
+  }
+
+  attack(otherHero) {
+    let damage = 15;
+    console.log(this.name + " attacked with " + damage + " damage.");
+    otherHero.attacked(damage);
+  }
 }
 
 class Dragon extends Hero {
-    constructor(name, hp) {
-        super(name, hp);
-        this.shield = true;
-        this.canFly = true;
-    }
-    
-    attack(otherHero) {
-        let damage = 5;
-        console.log(this.name + " attacked with " + damage + " damage.");
-        otherHero.attacked(damage);
-    }
+  constructor(name, hp) {
+    super(name, hp);
+    this.shield = true;
+    this.canFly = true;
+  }
+
+  attack(otherHero) {
+    let damage = 5;
+    console.log(this.name + " attacked with " + damage + " damage.");
+    otherHero.attacked(damage);
+  }
 }
 
 class Fight {
-    constructor(hero1, hero2) {
-        this.hero1 = hero1;
-        this.hero2 = hero2;
-        this.turn = 0;
-    }
+  constructor(hero1, hero2) {
+    this.hero1 = hero1;
+    this.hero2 = hero2;
+    this.turn = 0;
+  }
 
-    // chooseCharacter() {
-    //     // daca turn === 0
-    //     // iti salvezi imaginile in niste variabile
-    //     // listener la click 
-    // }
-
-    performAttack() {
-        if(this.turn === 0) {
-            this.hero1.attack(this.hero2);
-        } else {
-            this.hero2.attack(this.hero1);
-        }
+  performAttack() {
+    if (this.turn === 0) {
+      this.hero1.attack(this.hero2);
+    } else {
+      this.hero2.attack(this.hero1);
     }
+  }
 
-    changeTurn() {
-        this.turn = 1 - this.turn;
-    }
+  changeTurn() {
+    this.turn = 1 - this.turn;
+  }
 
-    findWinner() {
-        if(this.hero1.hp > 0) {
-            console.log(this.hero1.name + " won with " + this.hero1.hp + " HP remaining.")
-        } else if(this.hero2.hp > 0) {
-            console.log(this.hero2.name + " won with " + this.hero2.hp + " HP remaining.")
-        } else {
-            console.log("No heroes left alive.");
-        }
+  findWinner() {
+    if (this.hero1.hp > 0) {
+      console.log(
+        this.hero1.name + " won with " + this.hero1.hp + " HP remaining."
+      );
+    } else if (this.hero2.hp > 0) {
+      console.log(
+        this.hero2.name + " won with " + this.hero2.hp + " HP remaining."
+      );
+    } else {
+      console.log("No heroes left alive.");
     }
+  }
 
-    go() {
-        do {
-            this.performAttack();
-            this.changeTurn();
-        } while (this.hero1.hp > 0 && this.hero2.hp > 0);
-        this.findWinner();
-    }
+  go() {
+    do {
+      this.performAttack();
+      this.changeTurn();
+    } while (this.hero1.hp > 0 && this.hero2.hp > 0);
+    this.findWinner();
+  }
 }
 
 let dwarf = new Dwarf("Khurbada Oakenguard Dwarf", 50);
@@ -134,41 +139,88 @@ let dragon = new Dragon("Aphat, The Pun Dragon", 60);
 
 let epicFight = new Fight(dwarf, sprite);
 
-
 let selectedHero1 = null;
 let selectedHero2 = null;
 let selectedHero = document.querySelectorAll("[data-selection]");
-selectedHero.forEach(selectedHero => {
-    selectedHero.addEventListener("click", e => {
-        let selectedHeroName = selectedHero.dataset.selection
-        makeSelection(selectedHeroName)
-    })
-})
+selectedHero.forEach((selectedHero) => {
+  selectedHero.addEventListener("click", (e) => {
+    let selectedHeroName = selectedHero.dataset.selection;
+    makeSelection(selectedHeroName);
+  });
+});
 
 function makeSelection(selection) {
-        if (!selectedHero1) {
-            selectedHero1 = selection;
-            console.log("Player 1 selected:", selection);
-            imageP1Left(numeImagine)
-        } else if (!selectedHero2) {
-            selectedHero2 = selection;
-            console.log("Player 2 selected:", selection);
-            imageP2Right(numeImagine)
-        };
+  if (!selectedHero1) {
+    selectedHero1 = selection;
+    console.log("Player 1 selected:", selection);
+    imageP1Left(imageName);
+  } else if (!selectedHero2) {
+    selectedHero2 = selection;
+    console.log("Player 2 selected:", selection);
+    imageP2Right(imageName);
+  }
 }
 
-// document.getElementById("buton").addEventListener("click", function() {
-//     var divImagine = document.getElementById("divImagine");
-//     var imagine = document.createElement("img");
-//     imagine.src = "calea-catre-imagine.jpg"; // înlocuiește cu calea către imaginea ta
-//     divImagine.appendChild(imagine);
-//   });
+function imageP1Left(imageName) {
+  let divImagine = document.getElementById("div-image1");
+  divImagine.innerHTML = '<img src="' + imageName + '" alt="Imagine">';
+}
+function imageP2Right(imageName) {
+  let divImagine = document.getElementById("div-image2");
+  divImagine.innerHTML = '<img src="' + imageName + '" alt="Imagine">';
+}
 
-function imageP1Left(numeImagine) {
-    var divImagine = document.getElementById('div-image1');
-    divImagine.innerHTML = '<img src="' + numeImagine + '" alt="Imagine">';
+function dwarfSelector(image) {
+  if (!selectedHero1) {
+    imageP1Left(`/assets/images/dwarf.png`);
+    changeImageDwarf(image);
+  } else if (!selectedHero2) {
+    imageP2Right(`/assets/images/dwarf.png`);
+    changeImageDwarf(image);
   }
-  function imageP2Right(numeImagine) {
-    var divImagine = document.getElementById('div-image2');
-    divImagine.innerHTML = '<img src="' + numeImagine + '" alt="Imagine">';
+}
+
+function spriteSelector(image) {
+    if (!selectedHero1) {
+      imageP1Left(`/assets/images/sprite.png`);
+      changeImageSprite(image);
+    } else if (!selectedHero2) {
+      imageP2Right(`/assets/images/sprite.png`);
+      changeImageSprite(image);
+    }
   }
+
+  function dragonSelector(image) {
+    if (!selectedHero1) {
+      imageP1Left(`/assets/images/dragon.png`);
+      changeImageDragon(image);
+    } else if (!selectedHero2) {
+      imageP2Right(`/assets/images/dragon.png`);
+      changeImageDragon(image);
+    }
+  }
+
+
+function changeImageDwarf(image) {
+    if(!selectedHero1) {
+        image.src = '/assets/images/dwarf_selected.png';
+    } else if(!selectedHero2) {
+        image.src = '/assets/images/dwarf_selected2.png';
+    }
+    
+};
+function changeImageSprite(image) {
+    if(!selectedHero1) {
+        image.src = '/assets/images/sprite_selected.png';
+    } else if(!selectedHero2) {
+        image.src = '/assets/images/sprite_selected2.png';
+    }
+};
+function changeImageDragon(image) {
+    if(!selectedHero1) {
+        image.src = '/assets/images/dragon_selected.png';
+    } else if(!selectedHero2) {
+        image.src = '/assets/images/dragon_selected2.png';
+    }
+};
+// "changeImage()"

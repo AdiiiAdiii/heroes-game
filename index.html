@@ -25,13 +25,13 @@
         </div>
         <div class="heroes-container">
             <div class="hero-container">
-                <button onclick="imageP1Left(`/assets/images/dwarf.png`) || imageP2Right(`/assets/images/dwarf.png`)" class="hero-selection" data-selection="dwarf"><img class="heroImage dwarf" src="/assets/images/dwarf_selection3.png" alt="Dwarf"></button>
+                <button onclick="dwarfSelector()" class="hero-selection" data-selection="dwarf"><img onclick="changeImageDwarf(this)" class="heroImage dwarf" src="/assets/images/dwarf_selection3.png" alt="Dwarf"></button>
             </div>
             <div class="hero-container">
-                <button onclick="imageP1Left(`/assets/images/sprite.png`) || imageP2Right(`/assets/images/sprite.png`)" class="hero-selection" data-selection="sprite"><img class="heroImage sprite" src="/assets/images/sprite_selection3.png" alt="Sprite"></button>
+                <button onclick="spriteSelector()" class="hero-selection" data-selection="sprite"><img onclick="changeImageSprite(this)" class="heroImage sprite" src="/assets/images/sprite_selection3.png" alt="Sprite"></button>
             </div>
             <div class="hero-container">
-                <button onclick="imageP1Left(`/assets/images/dragon.png`) || imageP2Right(`/assets/images/dragon.png`)" class="hero-selection" data-selection="dragon"><img class="heroImage dragon" src="/assets/images/dragon_selection3.png" alt="Dragon"></button>
+                <button onclick="dragonSelector()" class="hero-selection" data-selection="dragon"><img onclick="changeImageDragon(this)" class="heroImage dragon" src="/assets/images/dragon_selection3.png" alt="Dragon"></button>
             </div>
         </div>
     </div>

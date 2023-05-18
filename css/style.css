@@ -44,17 +44,24 @@ body {
 }
 
 .versus {
-    font-family: MortalKombat1;
-    padding-top: 144px;
+    padding-top: 25px;
     display: flex;
     flex-direction: row;
     align-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
+    align-items: center;
+}
+
+#div-image1 img {
+    width: 200px;
+}
+#div-image2 img {
+    width: 200px;
 }
 
 .versusText {
-    /* font-family: ; */
+    font-family: MortalKombat1;
     font-size: 48px;
     color: #ffffff;
 }
@@ -110,4 +117,17 @@ body {
 
 .p1-clicked-dwarf {
     content: url(/assets/images/dwarf_selected.png);
+}
+
+
+.d-none {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-block {
+    display: block;
 }
